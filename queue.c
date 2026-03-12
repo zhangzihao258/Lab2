@@ -57,3 +57,11 @@ void queue_free(Queue *queue)
   free(queue);
 }
 
+void another_queue_free(Queue **queue)
+{
+  if (queue==NULL||(*queue)==NULL)
+    perror("invalid input!");
+  free((*queue)->data);
+  free(*queue);
+  queue=NULL;
+}

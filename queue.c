@@ -31,7 +31,7 @@ void push(Queue *queue, double element)
     double *data1 = realloc(queue->data, sizeof(double) * capacity);
     if (data1 == NULL) {
       printf("false");
-      return;
+      exit(1);
   }
     queue->data=data1;
     queue->capacity = capacity;

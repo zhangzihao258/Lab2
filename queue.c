@@ -20,8 +20,10 @@ Queue *queue_create(void)
 
 void push(Queue *queue, double element)
 {
-  if (queue==NULL)
+  if (queue==NULL){
     perror("invalid input!");
+    exit(1);
+  }
   if (queue->size == queue->capacity)
   {
     int capacity = queue->capacity * 2;
@@ -42,25 +44,33 @@ void push(Queue *queue, double element)
 
 double back(Queue *queue)
 {
-  if (queue==NULL)
+  if (queue==NULL){
     perror("invalid input!");
-  if (queue->size==0)
+    exit(1);
+  }
+  if (queue->size==0){
     perror("visit empty queue!");
+    exit(1);
+  }
   return queue->data[queue->size - 1];
 }
 
 void queue_free(Queue *queue)
 {
-  if (queue==NULL)
+  if (queue==NULL){
     perror("invalid input!");
+    exit(1);
+  }
   free(queue->data);
   free(queue);
 }
 
 void another_queue_free(Queue **queue)
 {
-  if (queue==NULL||(*queue)==NULL)
+  if (queue==NULL||(*queue)==NULL){
     perror("invalid input!");
+    exit(1);
+  }
   free((*queue)->data);
   free(*queue);
   queue=NULL;
